@@ -1,26 +1,27 @@
 import React from "react";
 import LangBox from "../components/LangBox";
+import Tag from "../components/Tag";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GoRepo, GoStar } from "react-icons/go";
 import { BsCircleFill } from "react-icons/bs";
 
 const SearchContent = ({ match }) => {
+  const [count, setCount] = useState([])
   const [langs, setLangs] = useState([
     {
       index: 1,
-      lang: "css",
+      lang: "Python",
       count: 1,
     },
     {
       index: 2,
-      lang: "scss",
+      lang: "C",
       count: 2,
     },
   ]);
 
   useEffect(() => {
-    console.log(match);
     fetchRepo();
   }, [match.params.id]);
 
@@ -37,10 +38,8 @@ const SearchContent = ({ match }) => {
     )
       .then((response) => response.json())
       .then((result) => {setDisplay(result.items)
-    console.log(result.items)})
+        setCount(result.total_count)})
       .catch((error) => console.log("error", error));
-
-    // console.log(display)
   };
 
   const timediff = (date) => {
@@ -48,7 +47,6 @@ const SearchContent = ({ match }) => {
     var updateTime = Date.parse(date)
     var time_diff = (currentTime - updateTime) / 1000
 
-    console.log(time_diff);
     if (time_diff > 29030400) {
         return (Math.floor(time_diff/29030400)) + " years";
     } else if (time_diff > 2419200) {
@@ -74,22 +72,24 @@ const SearchContent = ({ match }) => {
           <LangBox langs={langs} />
         </div>
         <div className="search-content">
-          <div className="lang-content search-content-top">
-            <div>Result</div>
-            <div>Sort</div>
+          <div className="search-content-top">
+            <div className="title">{count} repository results</div>
           </div>
           <div>
             {display.map((content) => (
               <div key={content.id} className="content-containter">
-                <GoRepo />
+                <GoRepo className="repo-icon"/>
                 <div>
                 <Link to={`/${content.full_name}/${content.full_name}`}>
-                  <div className="content-title">{content.full_name}</div>
+                  <div className="content-title">{content.owner.login}/<b>{content.name}</b></div>
                 </Link>
                   <div className="desc">{content.description}</div>
+                  <div>
+                      <Tag url={content.full_name}/>
+                  </div>
                   <div className="attr-grup">
-                    <div className="attribute"> <GoStar /> {content.stargazers_count} </div>
-                    <div className="attribute"> <BsCircleFill />{content.language} </div>
+                    {content.stargazers_count ? <div className="attribute"> <GoStar /> {content.stargazers_count} </div> : ''}
+                    {content.language ? <div className="attribute"> <BsCircleFill /> {content.language} </div> : ''}
                     {content.license ? <div className="attribute"> {content.license.name} </div> : ''}
                     <div className="attribute"> Updated {timediff(content.updated_at)} ago </div>
                     {content.open_issues !== 0 ? <div className="attribute"> {content.open_issues} issues need help</div> : ''}
