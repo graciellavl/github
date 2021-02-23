@@ -49,7 +49,7 @@ const Details = ( {match} ) => {
                     <div className="item-box">
                         <div><b>About</b></div>
                         {display.description ?<div>{display.description}</div> : <div><em>No description, website, or topics provided.</em></div>}
-                        {/* <Tag url={display.full_name} /> */}
+                        <Tag url={display.full_name} />
                     </div>
 
                     <div className="item-box">
