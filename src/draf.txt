@@ -1,0 +1,161 @@
+import Header from "./components/Header"
+// import Details from "./components/Details"
+import SearchContent from "./components/SearchContent"
+import LangBox from "./components/LangBox"
+import { useState, useEffect } from 'react'
+// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+
+const App = () => {
+  const [langs, setLangs] = useState([
+    {
+      index: 1,
+      lang: 'css',
+      count: 1
+    },
+    {
+      index: 2,
+      lang: 'scss',
+      count: 2
+    }   
+  ])
+
+  const [display, setDisplay] = useState([]);
+  // var [contents, setContents] = useState([
+  //   {
+  //     name: "content",
+  //     desc: "descccccc",
+  //     tools: ["react", "ui"],
+  //     stars: 164,
+  //     langUse: 'JavaScript',
+  //     license: 'MIT',
+  //     update: '6 days ago',
+  //     issues: '6 issues need help'
+  //   },
+  //   {
+  //     name: "content 1",
+  //     desc: "descccccc 1",
+  //     tools: ["react 1", "ui 1"],
+  //     stars: 100,
+  //     langUse: 'JavaScript',
+  //     license: 'MIT',
+  //     update: '6 days ago',
+  //     issues: '6 issues need help'
+  //   }
+  // ])
+
+  useEffect(() => {
+    addQuery({text: "asd"})
+  }, [])
+
+  var url;
+
+  const addQuery = (query) => {
+    url = "https://api.github.com/search/repositories?q="
+    url += query.text
+
+    fetchRepo(url)
+  }
+
+  const [contents, setContents] = useState([])
+
+  const fetchRepo = async (query) =>  {
+      const response = await fetch(query);
+      const result = await response.json();
+
+      console.log("content", result.items);
+      setContents(result.items);
+
+      console.log(contents)
+  }
+
+  // const fetchRepo = async (url) =>  {
+  //   const response = await fetch(url);
+  //   const result = await response.json();
+  //   console.log(result);
+  // }
+  // async function getRepo (url) {
+  //   console.log(url)
+  //   const response = await fetch(url) 
+  //   const result = await response.json()
+
+  //   result.items.forEach(repo => {
+  //     var repoMatch = {
+  //       name: repo.name,
+  //       desc: repo.description,
+  //       tools: ["react 1", "ui 1"],
+  //       stars: repo.stargazers_count,
+  //       langUse: repo.language,
+  //       license: "repo.license.name",
+  //       update: repo.updated_at,
+  //       issues: repo.open_issues.count
+  //     }
+  //   contents.push(repo)
+  // })
+
+  //   // console.log(display)
+  //   console.log(result.items)
+  //   console.log(display)
+  //   console.log(contents)
+  // }
+
+  const repoURL = "https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}"
+
+  return (
+      <div>
+        {/* <button onClick={getRepo}>test</button> */}
+        <Header search={addQuery}/>
+        <div className="body main">
+          <div className="lang-box">
+            <LangBox langs={langs} />
+          </div>
+          <div className="search-content">
+            <div className="lang-content search-content-top">
+              <div>Result</div>
+              <div>Sort</div>
+            </div>
+            <SearchContent query="https://api.github.com/search/repositories?q=react"/>
+          </div>
+        </div>
+      </div>
+  )
+}
+
+
+export default App;
+
+import React from 'react'
+import Content from '../components/Content'
+import { useState, useEffect } from 'react'
+
+const SearchContent = ( {query} ) => {
+    
+    // useEffect(() => {
+    //     fetchRepo(query)
+        
+    //     console.log(query)
+    //   }, [])
+
+    // const [contents, setContents] = useState([])
+
+    // const fetchRepo = async (query) =>  {
+    //     const response = await fetch(query);
+    //     const result = await response.json();
+
+    //     console.log("content", result.items);
+    //     setContents(result.items);
+
+    //     console.log(contents)
+    // }
+
+    return (
+        <div>
+            {/* {contents.name} */}
+            {contents.map((content, index) => (
+                <Content key={index} content={content}/> 
+            ))}
+        </div>
+    )
+}
+
+export default SearchContent

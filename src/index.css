@@ -11,3 +11,127 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* Header.js */
+.header, .left-header, .right-header {
+  display: flex;
+  margin: 10px;
+}
+
+.header {
+  justify-content: space-between;
+  color: white;
+  width: 90%;
+  margin: auto;
+}
+
+.nav-content {
+  margin: 0 10px;
+  align-self: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+}
+.github-icon {
+  margin-right: 10px;
+}
+
+.link:hover {
+  color:#586069
+}
+
+.container {
+  margin: 0;
+  background-color: #24292E;
+}
+
+button {
+  background-color: #242424;
+  border: 1px solid #586069;
+  border-radius: 2px;
+  color: #585858;
+  align-self: center;
+}
+
+input {
+  background-color: #242424;
+  border: none;
+  margin-right: 5px;
+  color: white;
+}
+
+/* App */
+.body {
+  width: 80%;
+  margin: auto;
+}
+
+.main {
+  display: flex;
+}
+
+.lang-box {
+  /* border: 1px solid #e1e4e8; */
+  /* padding: 20px; */
+  margin: 10px;
+  border-radius: 6px;
+  width: 30%;
+}
+.search-content {
+  margin: 10px;
+  width: 80%;
+}
+
+.search-content-top {
+  border-bottom: 1px solid #e1e4e8;
+}
+
+/* Lang */
+.lang-content {
+  display: flex;
+  justify-content: space-between;
+}
+.language-container {
+  border: 1px solid #e1e4e8;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 6px;
+}
+
+/* Content */
+.content-containter {
+  border-bottom: 1px solid #e1e4e8;
+  display: flex;
+}
+.content-title {
+  color: #0366D6;
+  font-size: 16px;
+}
+.desc {
+  font-size: 14px;
+  color: #24292e;
+}
+.chip-grup {
+  display: flex;
+}
+.chip {
+  margin: 0 .125em .333em 0;
+  padding: 0 8px;
+  border-radius: 2em;
+  background-color: #F1f8ff;
+  color: #0366D6;
+  font-size: 12px;
+  font-weight: 500;
+}
+.attribute {
+  color: #586069;
+  font-size: 12px;
+  margin: 0 10px;
+}
+.attr-grup {
+  display: flex;
+}
