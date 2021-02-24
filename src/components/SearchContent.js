@@ -12,7 +12,7 @@ const SearchContent = ({ match }) => {
 
   useEffect(() => {
     fetchRepo();
-    console.log(match);
+    // console.log(match);
   }, [match.params.id]);
 
   const [display, setDisplay] = useState([]);
@@ -50,7 +50,8 @@ const SearchContent = ({ match }) => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((result) => {setDisplay(result.items)})
+      .then((result) => {setDisplay(result.items)
+      setCount(result.total_count)})
       .catch((error) => console.log("error", error));
   };
 
