@@ -178,7 +178,7 @@ input {
   border: 1px solid #e1e4e8;
   border-radius: 10px;
   width: 80%;
-  margin: 0 40px 0 0;
+  margin: 24px auto;
 }
 .user-icon {
   width: 30px;
@@ -188,4 +188,16 @@ input {
 .user {
   display: flex;
   flex-wrap: wrap;
+}
+.content-path {
+  color: #585858;
+  border-bottom: 1px solid #e1e4e8;
+  padding: 8px 16px;
+}
+.content-grup {
+  padding: 24px 40px;
+  border: 1px solid #e1e4e8;
+  border-radius: 10px;
+  width: 80%;
+  margin: 24px auto;
 }

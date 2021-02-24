@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { GoRepo } from "react-icons/go";
-import Tag from "../components/Tag";
 import ReactMarkdown from "react-markdown";
 
 const Details = ({ match }) => {
@@ -42,6 +41,7 @@ const Details = ({ match }) => {
       .then((response) => response.text())
       .then((result) => {
         setMarkdown(result);
+        console.log(result)
       })
       .catch((error) => console.log("error", error));
   };
@@ -85,16 +85,26 @@ const Details = ({ match }) => {
         </div>
       </div>
       <div className="body main flex-between">
-        <div className="">
-          {contents.map((content) => (
-            <a key={content.sha} href={content.html_url}>
-              {content.name}
-            </a>
-          ))}
-        </div>
-        <div className="md-style">
-          <div>README.md</div>
-          <ReactMarkdown source={markdown} />
+        <div className="body">
+          <div className="content-grup">
+            {contents.map((content) => (
+              <a
+                className="content-path"
+                key={content.sha}
+                href={content.html_url}
+              >
+                {content.name}
+              </a>
+            ))}
+          </div>
+          {markdown === "404: Not Found" ? (
+            <div className="md-style">
+              <div>README.md</div>
+              <ReactMarkdown source={markdown} />
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="right-content">
           <div className="item-box">
