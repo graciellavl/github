@@ -97,7 +97,7 @@ const Details = ({ match }) => {
               </a>
             ))}
           </div>
-          {markdown === "404: Not Found" ? (
+          {markdown !== "404: Not Found" ? (
             <div className="md-style">
               <div>README.md</div>
               <ReactMarkdown source={markdown} />
