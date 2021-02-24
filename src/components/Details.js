@@ -45,21 +45,9 @@ const Details = ({ match }) => {
   };
 
   const fetchContent = (default_branch) => {
-    var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
-    );
-    myHeaders.append("Access-Control-Allow-Origin", "*");
-    myHeaders.append(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
 
     var requestOptions = {
       method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
     };
 
     fetch(
