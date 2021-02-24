@@ -180,3 +180,12 @@ input {
   width: 80%;
   margin: 0 40px 0 0;
 }
+.user-icon {
+  width: 30px;
+  margin: 4px;
+  border-radius: 100%;
+}
+.user {
+  display: flex;
+  flex-wrap: wrap;
+}

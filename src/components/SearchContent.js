@@ -12,39 +12,23 @@ const SearchContent = ({ match }) => {
 
   useEffect(() => {
     fetchRepo();
-    // console.log(match);
   }, [match.params.id]);
 
   const [display, setDisplay] = useState([]);
 
-  // const fetchRepo = () => {
-  //   var requestOptions = {
-  //     method: "GET",
-  //   };
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
+  );
 
-  //   fetch(
-  //     `https://api.github.com/search/repositories?q=${match.params.id}`,
-  //     requestOptions
-  //   )
-  //     .then((response) => response.json())
-  //     .then((result) => {setDisplay(result.items)
-  //       setCount(result.total_count)})
-  //     .catch((error) => console.log("error", error));
-  // };
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
 
   const fetchRepo = () => {
-    var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
-    );
-
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-
     fetch(
       `https://api.github.com/search/repositories?q=${match.params.id}`,
       requestOptions
@@ -92,14 +76,14 @@ const SearchContent = ({ match }) => {
               <div key={content.id} className="content-containter">
                 <GoRepo className="repo-icon" />
                 <div className="main-content">
-                  <Link to={`/${content.full_name}/${content.full_name}`}>
+                  <Link to={`/${content.full_name}`}>
                     <div className="content-title">
                       {content.owner.login}/<b>{content.name}</b>
                     </div>
                   </Link>
                   <div className="desc">{content.description}</div>
                   <div>
-                    <Tag url={content.full_name} />
+                    {/* <Tag url={content.full_name} /> */}
                   </div>
                   <div className="attr-grup">
                     {content.stargazers_count ? (

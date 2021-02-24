@@ -11,7 +11,7 @@ const App = () => {
       <div>
         <Header />
           <Switch>
-            <Route path="/search/:id" component={SearchContent} />
+            <Route path="/search/repo/:id" component={SearchContent} />
             <Route path="/:name/:id" component={Details} />
             <Route path="/" exact component={Home}/>
           </Switch>

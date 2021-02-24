@@ -50,7 +50,7 @@ const Header = ({}) => {
             value={text}
             onChange={(e) => setText(e.target.value)}
           ></input>
-          <Link to={`/search/${text}`}>
+          <Link to={`/search/repo/${text}`}>
             <button>/</button>
           </Link>
           <div className="nav-content">Sign In</div>
