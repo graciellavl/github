@@ -9,13 +9,8 @@ const Tag = (  {url} ) => {
 
     const [label, setLabel] = useState([])
     const fetchLabel = () => {
-      var myHeaders = new Headers();
-      myHeaders.append("Authorization", "a274c49f8f2b915d87fcf573c096d80e0b3cded9");
-      
       var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
+        method: "GET",
       };
     
         fetch(

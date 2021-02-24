@@ -48,16 +48,9 @@ const Details = ({ match }) => {
   };
 
   const fetchLabel = (full_name) => {
-    var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
-    );
-
     var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-    };
+        method: "GET",
+      };
 
     fetch(`https://api.github.com/repos/${full_name}/tags`, requestOptions)
       .then((response) => response.json())
