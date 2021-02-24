@@ -10,7 +10,7 @@ const Tag = (  {url} ) => {
     const [label, setLabel] = useState([])
     const fetchLabel = () => {
       var myHeaders = new Headers();
-      myHeaders.append("Authorization", "0f526bf84bfcf6bcf7e27dd64d923396679731d2");
+      myHeaders.append("Authorization", "a274c49f8f2b915d87fcf573c096d80e0b3cded9");
       
       var requestOptions = {
         method: 'GET',

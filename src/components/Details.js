@@ -17,7 +17,12 @@ const Details = ({ match }) => {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "0f526bf84bfcf6bcf7e27dd64d923396679731d2"
+      "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
+    );
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
     );
 
     var requestOptions = {
@@ -43,7 +48,12 @@ const Details = ({ match }) => {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "0f526bf84bfcf6bcf7e27dd64d923396679731d2"
+      "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
+    );
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
     );
 
     var requestOptions = {
@@ -67,7 +77,12 @@ const Details = ({ match }) => {
     var myHeaders = new Headers();
     myHeaders.append(
       "Authorization",
-      "0f526bf84bfcf6bcf7e27dd64d923396679731d2"
+      "a274c49f8f2b915d87fcf573c096d80e0b3cded9"
+    );
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
     );
 
     var requestOptions = {
