@@ -91,7 +91,7 @@ const SearchContent = ({ match }) => {
                     {content.stargazers_count ? <div className="attribute"> <GoStar /> {content.stargazers_count} </div> : ''}
                     {content.language ? <div className="attribute"> <BsCircleFill /> {content.language} </div> : ''}
                     {content.license ? <div className="attribute"> {content.license.name} </div> : ''}
-                    <div className="attribute"> Updated {timediff(content.updated_at)} ago </div>
+                    <div className="attribute"> Updated {timediff(content.pushed_at)} ago </div>
                     {content.open_issues !== 0 ? <div className="attribute"> {content.open_issues} issues need help</div> : ''}
                   </div>
                 </div>

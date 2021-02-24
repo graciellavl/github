@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 
-const Tag = ({url}) => {
+const Tag = (  {url} ) => {
 
     useEffect(() => {
         fetchLabel();
@@ -14,7 +14,7 @@ const Tag = ({url}) => {
         };
     
         fetch(
-          `https://api.github.com/repos/${url}/labels`,
+          `https://api.github.com/repos/${url}/tags`,
           requestOptions
         )
           .then((response) => response.json())
@@ -24,7 +24,7 @@ const Tag = ({url}) => {
 
     return (
         <div>
-            {label ? <div className="chip-grup"> {label.map((tag) => (<div className="chip">{tag.name}</div>))} </div> : ''}
+            {label.length !== 0 ? <div className="chip-grup"> {label.map((tag) => (<div className="chip">{tag.name}</div>))} </div> : ''}
         </div>
     )
 }
