@@ -10,12 +10,20 @@ const Details = ({ match }) => {
   }, []);
 
   const [display, setDisplay] = useState([]);
-  const [label, setLabel] = useState([])
+  const [label, setLabel] = useState([]);
   const [markdown, setMarkdown] = useState();
 
   const fetchRepo = () => {
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "0f526bf84bfcf6bcf7e27dd64d923396679731d2"
+    );
+
     var requestOptions = {
       method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
     };
 
     fetch(
@@ -32,8 +40,16 @@ const Details = ({ match }) => {
   };
 
   const fetchContent = (default_branch) => {
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "0f526bf84bfcf6bcf7e27dd64d923396679731d2"
+    );
+
     var requestOptions = {
       method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
     };
 
     fetch(
@@ -48,18 +64,25 @@ const Details = ({ match }) => {
   };
 
   const fetchLabel = (full_name) => {
+    var myHeaders = new Headers();
+    myHeaders.append(
+      "Authorization",
+      "0f526bf84bfcf6bcf7e27dd64d923396679731d2"
+    );
+
     var requestOptions = {
-        method: "GET",
-      };
-  
-      fetch(
-        `https://api.github.com/repos/${full_name}/tags`,
-        requestOptions
-      )
-        .then((response) => response.json())
-        .then((result) => {setLabel(result)})
-        .catch((error) => console.log("error", error));
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
     };
+
+    fetch(`https://api.github.com/repos/${full_name}/tags`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setLabel(result);
+      })
+      .catch((error) => console.log("error", error));
+  };
 
   return (
     <div>
@@ -86,7 +109,16 @@ const Details = ({ match }) => {
                 <em>No description, website, or topics provided.</em>
               </div>
             )}
-            {label.length !== 0 ? <div className="chip-grup"> {label.map((tag) => (<div className="chip">{tag.name}</div>))} </div> : ''}
+            {label.length !== 0 ? (
+              <div className="chip-grup">
+                {" "}
+                {label.map((tag) => (
+                  <div className="chip">{tag.name}</div>
+                ))}{" "}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <div className="item-box">

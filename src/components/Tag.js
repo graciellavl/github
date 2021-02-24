@@ -9,9 +9,14 @@ const Tag = (  {url} ) => {
 
     const [label, setLabel] = useState([])
     const fetchLabel = () => {
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", "0f526bf84bfcf6bcf7e27dd64d923396679731d2");
+      
       var requestOptions = {
-          method: "GET",
-        };
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
     
         fetch(
           `https://api.github.com/repos/${url}/tags`,
@@ -24,7 +29,7 @@ const Tag = (  {url} ) => {
 
     return (
         <div>
-            {label.length !== 0 ? <div className="chip-grup"> {label.map((tag) => (<div className="chip">{tag.name}</div>))} </div> : ''}
+            {label.length !== 0 ? <div className="chip-grup"> {label.map((tag) => (<div className="chip" key={tag.name}>{tag.name}</div>))} </div> : ''}
         </div>
     )
 }
