@@ -41,7 +41,7 @@ const Details = ({ match }) => {
       .then((response) => response.text())
       .then((result) => {
         setMarkdown(result);
-        console.log(result)
+        console.log(result);
       })
       .catch((error) => console.log("error", error));
   };
@@ -97,13 +97,13 @@ const Details = ({ match }) => {
               </a>
             ))}
           </div>
-          {markdown !== "404: Not Found" ? (
+          {markdown === "404: Not Found" ? (
+            ""
+          ) : (
             <div className="md-style">
               <div>README.md</div>
               <ReactMarkdown source={markdown} />
             </div>
-          ) : (
-            ""
           )}
         </div>
         <div className="right-content">
